@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#101d32" />
+  <meta name="description" content="Repaso interactivo de Física y Química: modelos atómicos, estructura, tabla periódica, configuración electrónica, enlaces, números de oxidación y fórmulas." />
+  <title>Laboratorio atómico · Repaso de FyQ</title>
+  <style>
+    :root{--navy:#101d32;--navy2:#172a46;--blue:#1672e8;--cyan:#14bad0;--ink:#23354d;--muted:#687b93;--line:#dde6f0;--paper:#f5f8fd;--white:#fff;--soft:#eaf4ff;--good:#13785b;--goodbg:#eaf8f0;--bad:#af3c36;--badbg:#fff1ee;--gold:#ffcb58;--radius:20px;--shadow:0 12px 30px rgba(18,37,67,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55}
+    a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}::selection{background:#b9e8fa;color:#132c48}
+    :focus-visible{outline:3px solid #f2a900;outline-offset:3px}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    .top-inner{max-width:1240px;margin:auto;min-height:70px;padding:10px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:850;letter-spacing:-.5px;color:var(--navy)}
+    .brand-icon{display:grid;place-items:center;color:#fff;background:var(--navy);width:39px;height:39px;border-radius:13px;font-size:23px}
+    .brand small{display:block;color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;margin-top:-4px}
+    .nav{display:flex;align-items:center;gap:5px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+    .nav a{display:inline-flex;align-items:center;text-decoration:none;font-size:12px;font-weight:750;white-space:nowrap;padding:9px 11px;color:#53657c;border-radius:10px}.nav a:hover{background:var(--soft);color:var(--blue)}
+    .nav a.final-nav{background:#101d32;color:white}.nav a.final-nav:hover{background:#2f4c73}
+    main{max-width:1130px;margin:auto;padding:0 24px 80px}.hero{position:relative;margin-top:28px;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 85% 25%,#225a83 0%,transparent 29%),linear-gradient(115deg,#101d32 12%,#172e4d 72%,#12536b);color:#fff;padding:55px 55px 49px;isolation:isolate}
+    .hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(131,213,248,.22);border-radius:50%;z-index:-1}.hero:before{width:400px;height:400px;right:-120px;top:-145px}.hero:after{width:235px;height:235px;right:40px;top:-60px}
+    .eyebrow{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#74dfeb;margin-bottom:12px}.hero h1{font-size:clamp(34px,5.5vw,60px);line-height:1.08;letter-spacing:-.045em;margin:0 0 18px;max-width:680px}.hero p{font-size:17px;max-width:590px;color:#d5e6f6;margin:0 0 24px}
+    .hero-atom{position:absolute;right:65px;bottom:43px;width:180px;height:180px;opacity:.45;pointer-events:none}.hero-atom .orbit{position:absolute;left:3px;top:75px;width:175px;height:55px;border:2px solid #84dafa;border-radius:50%}.hero-atom .orbit:nth-child(2){transform:rotate(60deg)}.hero-atom .orbit:nth-child(3){transform:rotate(-60deg)}.hero-atom .nucleus{position:absolute;left:79px;top:93px;background:var(--gold);width:21px;height:21px;border-radius:50%;box-shadow:0 0 22px #f9c44b}
+    .btn{border:0;border-radius:12px;padding:12px 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:14px;text-decoration:none;transition:transform .13s,background .13s}.btn:active{transform:scale(.98)}.btn-primary{background:var(--blue);color:white}.btn-primary:hover{background:#095fc9}.btn-light{background:white;color:var(--navy)}.btn-light:hover{background:#e5f2ff}.btn-outline{background:transparent;border:1px solid #c7d5e5;color:var(--ink)}.btn-outline:hover{background:#eaf2fc}.btn-small{font-size:12px;padding:8px 12px;border-radius:9px}
+    .dashboard{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-top:18px}.dash-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px 25px;box-shadow:var(--shadow)}.dash-card .meta{font-size:12px;color:var(--muted);font-weight:850;text-transform:uppercase;letter-spacing:.07em}.dash-card strong{display:block;color:var(--navy);font-size:24px;line-height:1.3;margin:4px 0}.progress-track{width:100%;height:11px;background:#e7eef6;border-radius:99px;overflow:hidden;margin:14px 0 8px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#1881ed,#1ec8bd);border-radius:99px;transition:width .4s}.dashboard p{margin:0;color:var(--muted);font-size:13px}.stat-icons{font-size:27px;letter-spacing:8px;margin-top:4px}
+    .section{scroll-margin-top:95px;margin-top:55px}.section-top{display:flex;align-items:flex-start;gap:17px;margin-bottom:21px}.section-number{flex:none;background:#e2f0ff;color:#1863ba;display:grid;place-items:center;width:48px;height:48px;border-radius:16px;font-weight:900;font-size:20px}.section-top h2{margin:0;font-size:clamp(25px,3vw,34px);letter-spacing:-.035em;color:var(--navy);line-height:1.2}.section-top p{margin:5px 0 0;color:var(--muted)}
+    .theory{background:white;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow);padding:27px}.theory h3,.practice h3{color:var(--navy);margin:0 0 13px;font-size:19px;letter-spacing:-.025em}.theory p{margin:8px 0}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.mini{border:1px solid var(--line);border-radius:15px;padding:17px;background:#fbfdff}.mini strong{color:var(--navy);display:block;margin-bottom:5px}.mini p{font-size:14px;color:#4f6075;margin:0}.mini .symbol{font-size:25px;margin-bottom:6px;display:block}.callout{background:#eaf5ff;border-left:4px solid #2f91e7;border-radius:0 12px 12px 0;padding:13px 17px;margin:19px 0 0;font-size:14px;color:#274b70}
+    .timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.time-card{background:#fbfdff;border:1px solid var(--line);padding:15px;border-radius:13px}.time-card .year{color:#1174a7;font-size:12px;font-weight:900}.time-card b{display:block;margin:3px 0;color:var(--navy)}.time-card p{color:#5d6e82;font-size:13px;margin:0}.time-card .sketch{font-size:23px;display:block;margin-bottom:3px}
+    .data-table{width:100%;border-collapse:collapse;font-size:14px}.data-table th{text-align:left;background:#eaf3fd;color:#214a72;padding:11px 12px}.data-table td{padding:11px 12px;border-bottom:1px solid var(--line)}.data-table tr:last-child td{border-bottom:0}.tablewrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+    .calc-box{margin-top:18px;background:#f5faff;border:1px solid #d7e9fb;border-radius:16px;padding:20px}.calc-box h4{font-size:17px;margin:0 0 12px;color:var(--navy)}.fields{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.field{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-weight:750;font-size:12px}.field input,.field select,.answer-input{border:1px solid #bdccdd;background:white;border-radius:10px;padding:10px 12px;font-size:15px;color:var(--navy);min-height:43px;max-width:100%}.field input{width:100px}.field select{min-width:120px}.lab-output{margin-top:12px;background:white;border:1px dashed #b2cce7;border-radius:12px;padding:13px 16px;font-size:14px}.lab-output strong{color:var(--navy)}
+    .period-arrows{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 0}.period-arrows .mini{background:#f1f8ff}.direction{display:block;font-weight:900;font-size:22px;color:#1472c8;margin:5px 0}.mono{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace}.formula{display:inline-block;font-family:ui-monospace,Consolas,monospace;background:#edf5ff;border-radius:6px;padding:2px 6px;color:#174f8d;font-weight:750}
+    .practice{margin-top:16px;border:1px solid #d8e6f5;background:#fff;border-radius:22px;padding:24px 26px;box-shadow:var(--shadow)}.practice-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}.practice-head h3{margin:0}.practice-head small{color:#5c728c;font-weight:700}.questions{display:grid;gap:12px}.qcard{border:1px solid #dfe7f0;border-radius:15px;padding:19px;background:#fcfdff}.qtop{display:flex;gap:9px;align-items:baseline}.qidx{flex:none;font-size:11px;font-weight:900;color:#1174b7;background:#e4f3ff;border-radius:7px;padding:3px 7px}.qprompt{margin:0;font-weight:750;color:#21334a;font-size:15px}.qdetail{color:#63778e;font-size:13px;margin:8px 0 0}.qcontrols{margin-top:13px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{display:flex;align-items:center;gap:9px;border:1px solid #d5e1ed;border-radius:10px;padding:10px 12px;cursor:pointer;background:#fff;font-size:14px;min-height:45px}.choice:hover{border-color:#6ab2f3;background:#f0f8ff}.choice:has(input:checked){background:#e9f3ff;border-color:#3686d9}.choice input{accent-color:#1672e8;flex:none}.answer-input{width:100%;max-width:350px}.multi-fields{display:flex;flex-wrap:wrap;gap:10px}.multi-fields .field input{width:95px}
+    .qactions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}.feedback{margin-top:12px;border-radius:10px;padding:11px 13px;font-size:14px;line-height:1.5;display:none}.feedback.show{display:block}.feedback.ok{background:var(--goodbg);color:#11674a;border:1px solid #b8e5ce}.feedback.no{background:var(--badbg);color:#9c352d;border:1px solid #f4cbc4}.feedback.info{background:#eaf4ff;color:#245c90;border:1px solid #c8e1fa}.hint{display:none;font-size:13px;color:#61748c;background:#f1f6fa;border-radius:10px;padding:10px 12px;margin-top:10px}.hint.show{display:block}
+    .section-divider{border:0;border-top:1px solid #e0e8f2;margin:52px 0 0}
+    .challenge{background:linear-gradient(160deg,#102035,#1a3555);color:white;padding:32px;border-radius:25px;scroll-margin-top:90px;margin-top:58px}.challenge .section-top h2{color:white}.challenge .section-top p{color:#d0e4f5}.challenge .section-number{background:#f8c85d;color:#172b43}.challenge .challenge-bar{background:#ffffff16;border:1px solid #ffffff28;padding:17px;border-radius:13px;margin-bottom:19px;font-size:14px;color:#dceaf7}.challenge .qcard{background:white;color:var(--ink)}.challenge .challenge-buttons{display:flex;gap:11px;flex-wrap:wrap;margin-top:22px}.result{display:none;background:white;color:var(--ink);padding:25px;border-radius:16px;margin-top:20px}.result.show{display:block}.result h3{font-size:26px;color:var(--navy);margin:0 0 4px}.result p{margin:8px 0}.result .result-score{font-size:46px;font-weight:950;letter-spacing:-.06em;color:#1276d1}.result .focus{border-top:1px solid var(--line);padding-top:12px;margin-top:15px;font-size:14px}
+    .footer{max-width:1130px;margin:0 auto;padding:0 24px 38px;text-align:center;color:#7c8da0;font-size:12px}.footer p{margin:7px 0}.footer button{background:none;border:0;color:#59748f;text-decoration:underline;font-size:12px;padding:5px}
+    @media(max-width:980px){.nav a{padding:8px 7px}.top-inner{flex-wrap:wrap}.nav{width:100%}.hero-atom{right:10px;opacity:.22}.timeline{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:650px){main{padding:0 13px 40px}.top-inner{padding:8px 13px}.brand{font-size:14px}.hero{margin-top:13px;padding:32px 24px;border-radius:20px}.hero p{font-size:15px}.hero-atom{display:none}.dashboard{grid-template-columns:1fr}.dash-card{padding:18px}.section{margin-top:40px}.section-top{gap:10px}.section-number{width:42px;height:42px;font-size:17px}.section-top h2{font-size:25px}.theory,.practice{padding:17px}.grid-2,.grid-3,.timeline,.period-arrows{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.qcard{padding:14px}.challenge{padding:20px 13px;border-radius:19px}.practice-head{align-items:flex-start}.data-table{font-size:13px}.data-table td,.data-table th{padding:9px}.fields{gap:9px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="top-inner">
+    <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">⚛</span><span>LABORATORIO ATÓMICO<small>Física y Química · Repaso del tema 3</small></span></a>
+    <nav class="nav" aria-label="Apartados del tema">
+      <a href="#modelos">Modelos</a><a href="#estructura">Átomo</a><a href="#tabla">Tabla</a><a href="#configuracion">Configuración</a><a href="#enlaces">Enlaces</a><a href="#oxidacion">Oxidación</a><a href="#formulas">Fórmulas</a><a href="#reto" class="final-nav">Reto final ↗</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" id="inicio">
+    <span class="eyebrow">Tu entrenamiento para el examen</span>
+    <h1>La materia,<br/>por dentro.</h1>
+    <p>Entiende lo imprescindible, practica con preguntas que se corrigen al momento y comprueba cuánto sabes con un reto final.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-light" href="#modelos">Empezar a repasar →</a><a class="btn btn-outline" style="border-color:#8aa6c0;color:#fff" href="#reto">Ir al reto final</a></div>
+    <div class="hero-atom" aria-hidden="true"><span class="orbit"></span><span class="orbit"></span><span class="orbit"></span><span class="nucleus"></span></div>
+  </section>
+  <section class="dashboard" aria-label="Mi progreso">
+    <div class="dash-card"><div class="meta">Tu progreso de práctica</div><strong id="progressCount">0 de 0 ejercicios resueltos</strong><div class="progress-track" role="progressbar" aria-label="Ejercicios correctos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack"><div class="progress-fill" id="progressFill"></div></div><p>Los aciertos se guardan en este navegador. Puedes repetir las preguntas todas las veces que necesites.</p></div>
+    <div class="dash-card"><div class="meta">El camino</div><strong>7 apartados + 1 reto</strong><div class="stat-icons" aria-hidden="true">⚛ 🔬 🧪 🏆</div><p>Lee, prueba, comprueba y aprende de los errores.</p></div>
+  </section>
+
+  <section class="section" id="modelos">
+    <header class="section-top"><div class="section-number">01</div><div><h2>Modelos atómicos</h2><p>Cómo ha cambiado nuestra idea del átomo.</p></div></header>
+    <div class="theory">
+      <h3>La historia en seis pasos</h3>
+      <div class="timeline">
+        <div class="time-card"><span class="sketch">●</span><span class="year">Antigua Grecia</span><b>Demócrito</b><p>Propuso que la materia estaba formada por partículas diminutas e indivisibles.</p></div>
+        <div class="time-card"><span class="sketch">⚫</span><span class="year">1808</span><b>Dalton</b><p>Átomos como esferas macizas. Los de un mismo elemento se consideraban iguales.</p></div>
+        <div class="time-card"><span class="sketch">🍪</span><span class="year">1897</span><b>Thomson</b><p>Descubrió el electrón. Imaginó electrones incrustados en una esfera positiva.</p></div>
+        <div class="time-card"><span class="sketch">◉</span><span class="year">1911</span><b>Rutherford</b><p>Experimento de la lámina de oro: núcleo pequeño, positivo y átomo casi vacío.</p></div>
+        <div class="time-card"><span class="sketch">◎</span><span class="year">1913</span><b>Bohr</b><p>Los electrones ocupan niveles de energía determinados alrededor del núcleo.</p></div>
+        <div class="time-card"><span class="sketch">☁️</span><span class="year">Modelo actual</span><b>Cuántico</b><p>Los electrones se describen mediante orbitales: regiones de probabilidad.</p></div>
+      </div>
+      <div class="callout"><b>Para el examen:</b> relaciona cada científico con su aportación. Rutherford descubre la importancia del núcleo; Bohr introduce niveles; el modelo actual utiliza orbitales, no órbitas fijas.</div>
+    </div>
+    <div class="practice"><div class="practice-head"><h3>✍️ Practica: modelos atómicos</h3><small>5 ejercicios autocorregibles</small></div><div class="questions" id="quiz-modelos"></div></div>
+  </section>
+
+  <section class="section" id="estructura">
+    <header class="section-top"><div class="section-number">02</div><div><h2>Estructura del átomo, isótopos e iones</h2><p>Protones, neutrones, electrones y cargas.</p></div></header>
+    <div class="theory">
+      <div class="grid-3">
+        <div class="mini"><span class="symbol">🔴</span><strong>Protón (p⁺)</strong><p>Carga +1. Está en el <b>núcleo</b>. Masa ≈ 1 u.</p></div>
+        <div class="mini"><span class="symbol">⚪</span><strong>Neutrón (n)</strong><p>Carga 0. Está en el <b>núcleo</b>. Masa ≈ 1 u.</p></div>
+        <div class="mini"><span class="symbol">🔵</span><strong>Electrón (e⁻)</strong><p>Carga −1. Está en la <b>corteza</b>. Masa mucho menor.</p></div>
+      </div>
+      <div class="grid-2" style="margin-top:13px">
+        <div class="mini"><strong>Z = número atómico</strong><p>Indica los <b>protones</b>. Un átomo neutro tiene también Z electrones.</p></div>
+        <div class="mini"><strong>A = número másico</strong><p>Protones + neutrones. Por tanto: <span class="formula">N = A − Z</span>.</p></div>
+        <div class="mini"><strong>Isótopos</strong><p>Átomos del mismo elemento (mismo Z) con distinto número de neutrones (distinto A).</p></div>
+        <div class="mini"><strong>Iones</strong><p><b>Catión (+):</b> pierde electrones. <b>Anión (−):</b> gana electrones. Los protones no cambian.</p></div>
+      </div>
+      <div class="calc-box">
+        <h4>🔬 Laboratorio: construye un átomo o un ion</h4>
+        <div class="fields"><label class="field">Número atómico (Z)<input id="atomZ" type="number" min="1" max="118" value="11" /></label><label class="field">Número másico (A)<input id="atomA" type="number" min="1" max="300" value="23" /></label><label class="field">Carga del ion<select id="atomCharge"><option value="-3">3−</option><option value="-2">2−</option><option value="-1">1−</option><option value="0">Neutro (0)</option><option value="1" selected>1+</option><option value="2">2+</option><option value="3">3+</option></select></label></div>
+        <div class="lab-output" id="atomOutput" aria-live="polite"></div>
+      </div>
+      <div class="callout"><b>Truco:</b> los protones siempre son Z. Los neutrones son A − Z. Los electrones se obtienen restando la carga: en Na⁺ hay 11 − 1 = 10 electrones; en Cl⁻ hay 17 + 1 = 18.</div>
+    </div>
+    <div class="practice"><div class="practice-head"><h3>✍️ Practica: estructura e iones</h3><small>6 ejercicios autocorregibles</small></div><div class="questions" id="quiz-estructura"></div></div>
+  </section>
+
+  <section class="section" id="tabla">
+    <header class="section-top"><div class="section-number">03</div><div><h2>La tabla periódica</h2><p>Familias, periodos y propiedades.</p></div></header>
+    <div class="theory">
+      <div class="grid-2">
+        <div class="mini"><strong>7 periodos (filas) ↔</strong><p>En el modelo simplificado del tema, indican cuántos niveles de energía ocupados tiene el átomo.</p></div>
+        <div class="mini"><strong>18 grupos (columnas) ↕</strong><p>Los elementos del mismo grupo suelen tener propiedades semejantes.</p></div>
+      </div>
+      <div class="tablewrap" style="margin-top:16px"><table class="data-table"><thead><tr><th>Grupo</th><th>Familia</th><th>Ejemplos</th></tr></thead><tbody>
+        <tr><td>1</td><td>Metales alcalinos (excepto H)</td><td>Li, Na, K</td></tr><tr><td>2</td><td>Alcalinotérreos</td><td>Be, Mg, Ca</td></tr><tr><td>3–12</td><td>Metales de transición</td><td>Fe, Ni, Cu</td></tr><tr><td>16</td><td>Anfígenos</td><td>O, S</td></tr><tr><td>17</td><td>Halógenos</td><td>F, Cl, Br</td></tr><tr><td>18</td><td>Gases nobles</td><td>He, Ne, Ar</td></tr>
+      </tbody></table></div>
+      <h3 style="margin-top:19px">Tendencias periódicas</h3>
+      <div class="period-arrows">
+        <div class="mini"><strong>Electronegatividad y energía de ionización</strong><span class="direction">↑ y →</span><p>En general, aumentan hacia arriba y a la derecha (con particularidades en gases nobles).</p></div>
+        <div class="mini"><strong>Radio atómico</strong><span class="direction">↓ y ←</span><p>En general, aumenta hacia abajo y a la izquierda.</p></div>
+      </div>
+      <div class="callout"><b>Recuerda:</b> el número atómico crece de izquierda a derecha y de arriba abajo. La mayor parte de los metales se encuentra a la izquierda y en el centro; los no metales, principalmente a la derecha.</div>
+    </div>
+    <div class="practice"><div class="practice-head"><h3>✍️ Practica: tabla periódica</h3><small>5 ejercicios autocorregibles</small></div><div class="questions" id="quiz-tabla"></div></div>
+  </section>
+
+  <section class="section" id="configuracion">
+    <header class="section-top"><div class="section-number">04</div><div><h2>Configuración electrónica</h2><p>Cómo se distribuyen los electrones.</p></div></header>
+    <div class="theory">
+      <p>Los electrones se colocan siguiendo el orden de menor a mayor energía (regla de Moeller). Cada <b>subnivel</b> admite un máximo:</p>
+      <div class="grid-2" style="margin-top:12px">
+        <div class="mini"><strong>Subnivel s → 2 e⁻</strong><p>Ejemplo: 1s²</p></div><div class="mini"><strong>Subnivel p → 6 e⁻</strong><p>Ejemplo: 2p⁶</p></div><div class="mini"><strong>Subnivel d → 10 e⁻</strong><p>Ejemplo: 3d¹⁰</p></div><div class="mini"><strong>Subnivel f → 14 e⁻</strong><p>Ejemplo: 4f¹⁴</p></div>
+      </div>
+      <div class="callout"><b>Orden de llenado más utilizado:</b><br/><span class="mono" style="display:block;margin-top:7px;overflow-wrap:anywhere">1s → 2s → 2p → 3s → 3p → 4s → 3d → 4p → 5s → 4d → 5p → 6s → 4f → 5d → 6p...</span><br/>Ejemplo del cloro (Z = 17): <b>1s² 2s² 2p⁶ 3s² 3p⁵</b> (suma: 2 + 2 + 6 + 2 + 5 = 17).</div>
+      <div class="calc-box">
+        <h4>🧮 Generador de configuraciones</h4><div class="fields"><label class="field">Electrones (Z, átomo neutro)<input id="configZ" type="number" min="1" max="38" value="17" /></label><button class="btn btn-primary" type="button" id="configBtn">Generar</button></div><div class="lab-output" id="configOutput" aria-live="polite"></div><p style="font-size:12px;color:#687d95;margin:9px 0 0">Incluye las excepciones de cromo (Z = 24) y cobre (Z = 29). Permite Z de 1 a 38.</p>
+      </div>
+      <div class="callout"><b>Muy importante:</b> el periodo coincide con el mayor nivel principal ocupado. El bloque de la tabla se relaciona con el subnivel que se está llenando. Los gases nobles tienen la capa externa completa (He: 1s²).</div>
+    </div>
+    <div class="practice"><div class="practice-head"><h3>✍️ Practica: configuraciones</h3><small>5 ejercicios autocorregibles</small></div><div class="questions" id="quiz-configuracion"></div></div>
+  </section>
+
+  <section class="section" id="enlaces">
+    <header class="section-top"><div class="section-number">05</div><div><h2>El enlace químico</h2><p>Por qué se unen los átomos.</p></div></header>
+    <div class="theory">
+      <p>Los átomos pueden unirse porque así alcanzan un estado de menor energía y mayor estabilidad. En muchos ejemplos sencillos se aplica la <b>regla del octeto</b>: completar ocho electrones en la capa externa (el hidrógeno sigue la regla del dueto).</p>
+      <div class="grid-3" style="margin-top:14px">
+        <div class="mini"><span class="symbol">🧲</span><strong>Enlace iónico</strong><p><b>Metal + no metal.</b> Se transfieren electrones y aparecen iones de carga opuesta. Ej.: NaCl.</p></div>
+        <div class="mini"><span class="symbol">🤝</span><strong>Enlace covalente</strong><p><b>No metal + no metal.</b> Comparten pares de electrones. Ej.: H₂O, CO₂.</p></div>
+        <div class="mini"><span class="symbol">🔩</span><strong>Enlace metálico</strong><p><b>Metales.</b> Los electrones están deslocalizados por la estructura. Ej.: Cu, Fe.</p></div>
+      </div>
+      <div class="tablewrap" style="margin-top:17px"><table class="data-table"><thead><tr><th>Tipo</th><th>Conductividad</th><th>Punto de fusión</th></tr></thead><tbody><tr><td>Iónico</td><td>Fundido o disuelto en agua; no como sólido</td><td>Generalmente alto</td></tr><tr><td>Covalente molecular</td><td>Generalmente no conductor</td><td>Generalmente bajo</td></tr><tr><td>Covalente en red</td><td>Generalmente no conductor*</td><td>Muy alto</td></tr><tr><td>Metálico</td><td>Buen conductor en estado sólido</td><td>Habitualmente alto (variable)</td></tr></tbody></table></div>
+      <p style="font-size:12px;color:#75859a;margin:7px 0 0">*Excepción conocida: el grafito conduce la electricidad. La solubilidad no es igual para todas las sustancias iónicas o covalentes.</p>
+      <div class="callout"><b>Pregunta típica:</b> ¿por qué el cloruro de sodio sólido no conduce, pero disuelto sí? Porque en el sólido los iones no pueden desplazarse libremente; en disolución sí.</div>
+    </div>
+    <div class="practice"><div class="practice-head"><h3>✍️ Practica: enlaces</h3><small>5 ejercicios autocorregibles</small></div><div class="questions" id="quiz-enlaces"></div></div>
+  </section>
+
+  <section class="section" id="oxidacion">
+    <header class="section-top"><div class="section-number">06</div><div><h2>Números de oxidación</h2><p>Una herramienta para entender los compuestos.</p></div></header>
+    <div class="theory">
+      <div class="grid-2"><div class="mini"><strong>Reglas esenciales</strong><p>Elemento libre: 0. Grupo 1: +1. Grupo 2: +2. Oxígeno: generalmente −2. Hidrógeno: generalmente +1 (−1 en hidruros metálicos).</p></div><div class="mini"><strong>Compuestos neutros</strong><p>La suma de los números de oxidación de <b>todos</b> los átomos es cero. En un ion poliatómico, esa suma coincide con su carga.</p></div></div>
+      <div class="calc-box"><h4>Ejemplo resuelto: Fe₂O₃</h4><p>El oxígeno suele actuar con −2. Hay tres oxígenos: <b>3 × (−2) = −6</b>.</p><p>Los dos átomos de hierro deben sumar +6: <b>2 × (+3) = +6</b>. Por tanto, Fe = <b>+3</b>.</p><p><span class="formula">2·(+3) + 3·(−2) = 0</span></p></div>
+      <div class="callout"><b>Para compuestos con paréntesis:</b> en Fe₂(SO₄)₃ el grupo sulfato SO₄ tiene carga −2. Tres sulfatos suman −6; por tanto, cada hierro tiene número de oxidación +3.</div>
+    </div>
+    <div class="practice"><div class="practice-head"><h3>✍️ Practica: oxidación</h3><small>5 ejercicios autocorregibles</small></div><div class="questions" id="quiz-oxidacion"></div></div>
+  </section>
+
+  <section class="section" id="formulas">
+    <header class="section-top"><div class="section-number">07</div><div><h2>Interpretación de fórmulas químicas</h2><p>Cuenta correctamente los átomos de cada elemento.</p></div></header>
+    <div class="theory"><div class="grid-2"><div class="mini"><strong>Subíndices</strong><p>En CO₂ hay <b>1 C y 2 O</b>. Cuando no aparece subíndice, significa 1.</p></div><div class="mini"><strong>Paréntesis</strong><p>En Ni(OH)₃, el 3 multiplica a todo lo que hay dentro: <b>1 Ni, 3 O y 3 H</b>.</p></div></div>
+      <div class="calc-box"><h4>Ejemplo resuelto: Fe₂(SO₄)₃</h4><p>El 2 indica <b>2 átomos de Fe</b>. El 3 fuera del paréntesis multiplica S y O: <b>S = 1 × 3 = 3</b> y <b>O = 4 × 3 = 12</b>.</p><p>Total: <span class="formula">2 + 3 + 12 = 17 átomos</span>.</p></div>
+      <div class="callout"><b>Atención:</b> una fórmula como NaCl representa la proporción entre iones en un compuesto iónico, no una molécula aislada. También debes saber contar los átomos a partir de su fórmula.</div>
+    </div>
+    <div class="practice"><div class="practice-head"><h3>✍️ Practica: fórmulas químicas</h3><small>5 ejercicios autocorregibles</small></div><div class="questions" id="quiz-formulas"></div></div>
+  </section>
+
+  <section class="challenge" id="reto">
+    <header class="section-top"><div class="section-number">★</div><div><h2>Reto final: misión átomo</h2><p>12 preguntas mezcladas de todos los apartados. ¿Cuánto recuerdas sin mirar los apuntes?</p></div></header>
+    <div class="challenge-bar"><b>Instrucciones:</b> responde las 12 preguntas y pulsa <b>Corregir mi reto</b>. Verás tu nota, las soluciones razonadas y los apartados que más conviene repasar. Cada intento genera una combinación nueva de preguntas.</div>
+    <div class="questions" id="challengeQuestions"></div>
+    <div class="challenge-buttons"><button class="btn btn-light" type="button" id="gradeChallenge">✓ Corregir mi reto</button><button class="btn btn-outline" style="border-color:#9bb2c9;color:#fff" type="button" id="newChallenge">↻ Nuevo reto</button></div>
+    <div id="challengeResult" class="result" aria-live="polite"></div>
+  </section>
+</main>
+<footer class="footer"><p>Material de repaso · Física y Química · 4.º de Diversificación</p><p>Funciona sin Internet una vez descargado. No necesita registro ni envía respuestas a ningún servidor.</p><button type="button" id="resetProgress">Borrar mi progreso de práctica</button></footer>
+<script>
+'use strict';
+// Un solo archivo: sin librerías, conexiones, cuentas ni dependencias externas.
+const practice = {
+  modelos:[
+    {id:'m1',type:'mc',prompt:'¿Quién propuso el átomo como una esfera maciza e indivisible?',options:['Bohr','Dalton','Rutherford','Schrödinger'],answer:1,hint:'Su propuesta se publicó en 1808.',why:'Dalton imaginó los átomos como esferas macizas. Era un modelo anterior al descubrimiento del electrón.'},
+    {id:'m2',type:'mc',prompt:'¿Qué científico descubrió el electrón y propuso el modelo del «pudin de pasas»?',options:['Thomson','Demócrito','Bohr','Rutherford'],answer:0,hint:'Su experimento utilizó rayos catódicos.',why:'Thomson identificó los electrones y los situó incrustados en una esfera de carga positiva.'},
+    {id:'m3',type:'mc',prompt:'La mayoría de las partículas alfa atravesaban la lámina de oro. ¿Qué dedujo Rutherford?',options:['Que los átomos no tienen protones','Que la mayor parte del átomo es espacio vacío','Que los electrones no existen','Que el átomo es totalmente macizo'],answer:1,hint:'Piensa en lo que significa que casi todas atravesaran la lámina.',why:'El átomo contiene un núcleo diminuto que concentra la masa y mucho espacio vacío alrededor.'},
+    {id:'m4',type:'mc',prompt:'¿Cuál fue la principal novedad del modelo de Bohr?',options:['Los protones','Los niveles de energía de los electrones','Los neutrones','Las nubes de probabilidad'],answer:1,hint:'Se suele dibujar con varias capas alrededor del núcleo.',why:'Bohr propuso niveles de energía permitidos para los electrones.'},
+    {id:'m5',type:'mc',prompt:'Según el modelo cuántico actual, un orbital es...',options:['Una trayectoria circular exacta','Una región donde es más probable encontrar al electrón','Una partícula del núcleo','La masa del átomo'],answer:1,hint:'No conocemos una trayectoria fija del electrón.',why:'Un orbital representa la distribución de probabilidad de encontrar un electrón, no una órbita fija.'}
+  ],
+  estructura:[
+    {id:'e1',type:'mc',prompt:'¿Qué partículas se encuentran en el núcleo atómico?',options:['Protones y electrones','Neutrones y electrones','Protones y neutrones','Solo electrones'],answer:2,hint:'Son las que aportan casi toda la masa.',why:'El núcleo contiene protones y neutrones; los electrones se encuentran en la región extranuclear.'},
+    {id:'e2',type:'fields',prompt:'Completa los datos del átomo neutro de fósforo ³¹₁₅P.',labels:['Protones','Neutrones','Electrones'],answer:[15,16,15],hint:'Z = 15 y A = 31. Recuerda: N = A − Z.',why:'Protones = 15; neutrones = 31 − 15 = 16; como es neutro, electrones = 15.'},
+    {id:'e3',type:'fields',prompt:'Completa los datos del ion Ca²⁺, con Z = 20 y A = 40.',labels:['Protones','Neutrones','Electrones'],answer:[20,20,18],hint:'Un ion 2+ ha perdido dos electrones.',why:'Tiene 20 protones, 20 neutrones y 18 electrones porque ha perdido 2.'},
+    {id:'e4',type:'mc',prompt:'Dos isótopos de un mismo elemento tienen...',options:['Igual número de neutrones','Igual número de protones y distinto número de neutrones','Diferente número atómico','Siempre la misma masa'],answer:1,hint:'Pertenecen al mismo elemento químico.',why:'Comparten Z (protones), pero cambian sus neutrones y, por tanto, su número másico A.'},
+    {id:'e5',type:'mc',prompt:'Un átomo gana 2 electrones. Se convierte en...',options:['Un catión 2+','Un anión 2−','Un isótopo','Un átomo con más protones'],answer:1,hint:'Los electrones tienen carga negativa.',why:'Al ganar dos electrones adquiere carga −2: es un anión.'},
+    {id:'e6',type:'number',prompt:'Un ion Br⁻ tiene Z = 35. ¿Cuántos electrones posee?',answer:36,hint:'El signo − indica un electrón extra.',why:'Bromo neutro: 35 electrones. Br⁻ ha ganado uno: 36.'}
+  ],
+  tabla:[
+    {id:'t1',type:'mc',prompt:'¿Qué indica el número de periodo en el modelo estudiado?',options:['La masa del átomo','El número de niveles principales ocupados','La cantidad de neutrones','La carga del núcleo'],answer:1,hint:'Los periodos son las filas.',why:'El periodo indica el nivel principal de energía más alto ocupado.'},
+    {id:'t2',type:'mc',prompt:'¿Qué grupo corresponde a los gases nobles?',options:['Grupo 1','Grupo 2','Grupo 17','Grupo 18'],answer:3,hint:'Es la última columna.',why:'Los gases nobles están en el grupo 18; suelen tener su última capa completa.'},
+    {id:'t3',type:'mc',prompt:'¿A qué familia pertenece el cloro (Cl)?',options:['Alcalinos','Halógenos','Gases nobles','Alcalinotérreos'],answer:1,hint:'Comparte grupo con flúor y bromo.',why:'El cloro pertenece al grupo 17, los halógenos.'},
+    {id:'t4',type:'mc',prompt:'¿Hacia dónde aumenta, en general, el radio atómico?',options:['Arriba y derecha','Abajo e izquierda','Solo a la derecha','No sigue ninguna tendencia'],answer:1,hint:'Piensa en los átomos con más niveles.',why:'El radio suele aumentar al descender en un grupo y al ir hacia la izquierda en un periodo.'},
+    {id:'t5',type:'mc',prompt:'¿Dónde se sitúan principalmente los metales de transición?',options:['Grupos 3 a 12','Grupo 18','Grupos 16 y 17','Solo el periodo 1'],answer:0,hint:'Ocupan el bloque central de la tabla.',why:'Los metales de transición se sitúan en la parte central, grupos 3–12.'}
+  ],
+  configuracion:[
+    {id:'c1',type:'mc',prompt:'¿Cuántos electrones caben como máximo en un subnivel p?',options:['2','6','10','14'],answer:1,hint:'Los máximos de s, p, d y f son 2, 6, 10 y 14.',why:'El subnivel p incluye tres orbitales y puede alojar hasta 6 electrones.'},
+    {id:'c2',type:'mc',prompt:'¿Qué subnivel se llena antes, 4s o 3d, siguiendo la regla de Moeller?',options:['3d','4s','Se llenan a la vez','Ninguno'],answer:1,hint:'Revisa el diagrama de llenado.',why:'El 4s se llena antes que el 3d en el orden de Aufbau habitual.'},
+    {id:'c3',type:'config',prompt:'Escribe la configuración electrónica del neón, Z = 10.',answer:'1s2 2s2 2p6',hint:'Rellena 1s (2), 2s (2) y 2p (6).',why:'2 + 2 + 6 = 10 electrones. Se escribe 1s² 2s² 2p⁶.'},
+    {id:'c4',type:'config',prompt:'Escribe la configuración electrónica del sodio, Z = 11.',answer:'1s2 2s2 2p6 3s1',hint:'Parte de los 10 electrones del neón y añade uno.',why:'Na: 1s² 2s² 2p⁶ 3s¹. El electrón 11 entra en 3s.'},
+    {id:'c5',type:'config',prompt:'Escribe la configuración electrónica del calcio, Z = 20.',answer:'1s2 2s2 2p6 3s2 3p6 4s2',hint:'Después del 3p se llena 4s.',why:'Ca: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s²; suma 20 electrones.'}
+  ],
+  enlaces:[
+    {id:'l1',type:'mc',prompt:'¿Qué tipo de enlace aparece entre un metal y un no metal, como Na y Cl?',options:['Iónico','Covalente','Metálico','Ninguno'],answer:0,hint:'Se forman iones de signo contrario.',why:'El sodio cede un electrón al cloro. Na⁺ y Cl⁻ se atraen: enlace iónico.'},
+    {id:'l2',type:'mc',prompt:'En un enlace covalente los átomos...',options:['Ceden siempre todos sus electrones','Comparten pares de electrones','Se transforman en metales','Pierden todos los protones'],answer:1,hint:'Piensa en la molécula de agua.',why:'Los átomos comparten electrones, generalmente entre no metales.'},
+    {id:'l3',type:'mc',prompt:'¿Por qué los metales suelen conducir bien la corriente?',options:['Porque tienen iones libres en disolución','Porque sus electrones están deslocalizados','Porque no contienen electrones','Porque todos son líquidos'],answer:1,hint:'Recuerda el modelo de la red metálica.',why:'En los metales existen electrones que pueden desplazarse por la estructura.'},
+    {id:'l4',type:'mc',prompt:'Un compuesto iónico suele conducir la electricidad...',options:['Solo cuando es sólido','Fundido o disuelto en agua','Nunca','Solo en estado gaseoso'],answer:1,hint:'Los iones deben poder moverse.',why:'En el sólido, los iones están fijos; fundido o en disolución pueden desplazarse.'},
+    {id:'l5',type:'mc',prompt:'¿Qué tipo de enlace tiene el diamante?',options:['Metálico','Iónico','Covalente en red','Covalente molecular'],answer:2,hint:'Forma una estructura gigante de átomos de carbono unidos.',why:'El diamante forma una red covalente muy dura y con un punto de fusión muy alto.'}
+  ],
+  oxidacion:[
+    {id:'o1',type:'number',prompt:'¿Cuál es el número de oxidación del oxígeno en H₂O?',answer:-2,hint:'Es el valor habitual del oxígeno.',why:'En H₂O, cada H vale +1: 2·(+1) + (−2) = 0.'},
+    {id:'o2',type:'number',prompt:'¿Qué número de oxidación tiene el hierro en Fe₂O₃?',answer:3,hint:'3 oxígenos aportan −6 entre todos.',why:'2x + 3(−2) = 0 ⇒ 2x = +6 ⇒ x = +3.'},
+    {id:'o3',type:'number',prompt:'¿Qué número de oxidación tiene el carbono en CO₂?',answer:4,hint:'Cada oxígeno suele ser −2.',why:'x + 2(−2) = 0 ⇒ x = +4.'},
+    {id:'o4',type:'number',prompt:'¿Qué número de oxidación tiene el azufre en SO₄²⁻?',answer:6,hint:'La suma tiene que dar −2 porque es un ion.',why:'x + 4(−2) = −2 ⇒ x − 8 = −2 ⇒ x = +6.'},
+    {id:'o5',type:'number',prompt:'¿Qué número de oxidación tiene el fósforo en H₃PO₄?',answer:5,hint:'El H suele ser +1 y el O, −2.',why:'3(+1) + x + 4(−2) = 0 ⇒ x = +5.'}
+  ],
+  formulas:[
+    {id:'f1',type:'fields',prompt:'¿Cuántos átomos de cada elemento hay en CO₂?',labels:['C','O'],answer:[1,2],hint:'El elemento sin subíndice tiene uno.',why:'CO₂ tiene 1 átomo de C y 2 de O.'},
+    {id:'f2',type:'fields',prompt:'Cuenta los átomos en Ni(OH)₃.',labels:['Ni','O','H'],answer:[1,3,3],hint:'El 3 multiplica tanto al O como al H.',why:'Ni(OH)₃: Ni = 1, O = 3, H = 3.'},
+    {id:'f3',type:'fields',prompt:'Cuenta los átomos en Fe₂(SO₄)₃.',labels:['Fe','S','O'],answer:[2,3,12],hint:'El paréntesis multiplica por 3 a S y a O₄.',why:'Fe = 2; S = 1·3 = 3; O = 4·3 = 12.'},
+    {id:'f4',type:'number',prompt:'¿Cuántos átomos hay en total en H₃PO₄?',answer:8,hint:'Suma 3 hidrógenos, 1 fósforo y 4 oxígenos.',why:'H₃PO₄ contiene 3 + 1 + 4 = 8 átomos en total.'},
+    {id:'f5',type:'fields',prompt:'Cuenta los átomos en CaF₂.',labels:['Ca','F'],answer:[1,2],hint:'El 2 solo afecta al F.',why:'CaF₂ contiene 1 Ca y 2 F.'}
+  ]
+};
+const finalPool = [
+  {id:'r-m1',topic:'Modelos',type:'mc',prompt:'¿Quién utilizó el experimento de la lámina de oro?',options:['Dalton','Rutherford','Thomson','Bohr'],answer:1,why:'Rutherford interpretó la desviación de partículas alfa y propuso un núcleo positivo muy pequeño.'},
+  {id:'r-m2',topic:'Modelos',type:'mc',prompt:'El modelo de Thomson introdujo la existencia de...',options:['Los orbitales','Los neutrones','Los electrones','Las órbitas cuantizadas'],answer:2,why:'Thomson descubrió el electrón y propuso un modelo con cargas negativas en una esfera positiva.'},
+  {id:'r-m3',topic:'Modelos',type:'mc',prompt:'¿Qué modelo describe electrones en orbitales de probabilidad?',options:['Dalton','Thomson','Cuántico actual','Demócrito'],answer:2,why:'En el modelo actual se utilizan orbitales en vez de trayectorias fijas.'},
+  {id:'r-e1',topic:'Átomo e iones',type:'fields',prompt:'Para ²⁴₁₂Mg neutro, calcula:',labels:['Protones','Neutrones','Electrones'],answer:[12,12,12],why:'Z = 12, A = 24; por eso N = 12 y el átomo neutro tiene 12 electrones.'},
+  {id:'r-e2',topic:'Átomo e iones',type:'fields',prompt:'El ion Al³⁺ tiene Z = 13 y A = 27. Indica:',labels:['Protones','Neutrones','Electrones'],answer:[13,14,10],why:'p = 13; n = 27 − 13 = 14; e = 13 − 3 = 10.'},
+  {id:'r-e3',topic:'Átomo e iones',type:'mc',prompt:'¿Qué cambia entre los isótopos de un elemento?',options:['Los protones','El número atómico','Los neutrones','El símbolo químico'],answer:2,why:'Tienen igual número de protones, pero distinto número de neutrones.'},
+  {id:'r-t1',topic:'Tabla periódica',type:'mc',prompt:'El potasio (K) pertenece al grupo 1. ¿Qué familia es?',options:['Halógenos','Gases nobles','Alcalinos','Alcalinotérreos'],answer:2,why:'El grupo 1 (excepto el hidrógeno) corresponde a los metales alcalinos.'},
+  {id:'r-t2',topic:'Tabla periódica',type:'mc',prompt:'¿Hacia dónde suele aumentar la energía de ionización?',options:['Abajo e izquierda','Arriba y derecha','Solo hacia abajo','No cambia'],answer:1,why:'En general aumenta hacia arriba y hacia la derecha de la tabla.'},
+  {id:'r-t3',topic:'Tabla periódica',type:'mc',prompt:'¿En qué grupo se encuentran los halógenos?',options:['2','16','17','18'],answer:2,why:'Flúor, cloro y bromo pertenecen al grupo 17.'},
+  {id:'r-c1',topic:'Configuración',type:'config',prompt:'Escribe la configuración electrónica del magnesio (Z = 12).',answer:'1s2 2s2 2p6 3s2',why:'Mg tiene 12 electrones: 1s² 2s² 2p⁶ 3s².'},
+  {id:'r-c2',topic:'Configuración',type:'config',prompt:'Escribe la configuración electrónica del cloro (Z = 17).',answer:'1s2 2s2 2p6 3s2 3p5',why:'Cl: 1s² 2s² 2p⁶ 3s² 3p⁵; suma 17.'},
+  {id:'r-c3',topic:'Configuración',type:'mc',prompt:'¿Cuál es la capacidad máxima del subnivel d?',options:['2','6','10','14'],answer:2,why:'El subnivel d admite un máximo de 10 electrones.'},
+  {id:'r-l1',topic:'Enlaces',type:'mc',prompt:'¿Qué tipo de enlace hay entre los átomos en H₂O?',options:['Iónico','Metálico','Covalente','Ninguno'],answer:2,why:'H y O son no metales y comparten electrones.'},
+  {id:'r-l2',topic:'Enlaces',type:'mc',prompt:'¿Cuál de estas sustancias conduce bien como sólido?',options:['NaCl','Cobre','Azúcar','Hielo'],answer:1,why:'En el cobre los electrones deslocalizados permiten conducir electricidad.'},
+  {id:'r-l3',topic:'Enlaces',type:'mc',prompt:'Los enlaces iónicos se basan en...',options:['Compartir electrones entre no metales','Atracción entre iones de cargas opuestas','Unión de núcleos','Moléculas metálicas'],answer:1,why:'Los cationes y aniones se atraen electrostáticamente.'},
+  {id:'r-o1',topic:'Oxidación',type:'number',prompt:'Calcula el número de oxidación del S en SO₂.',answer:4,why:'x + 2(−2) = 0 ⇒ x = +4.'},
+  {id:'r-o2',topic:'Oxidación',type:'number',prompt:'Calcula el número de oxidación del Fe en FeCl₃ (Cl = −1).',answer:3,why:'x + 3(−1) = 0 ⇒ x = +3.'},
+  {id:'r-o3',topic:'Oxidación',type:'number',prompt:'Calcula el número de oxidación del N en NH₃ (H = +1).',answer:-3,why:'x + 3(+1) = 0 ⇒ x = −3.'},
+  {id:'r-f1',topic:'Fórmulas',type:'fields',prompt:'Cuenta los átomos de Ca₃(PO₄)₂.',labels:['Ca','P','O'],answer:[3,2,8],why:'Ca = 3; P = 1×2 = 2; O = 4×2 = 8.'},
+  {id:'r-f2',topic:'Fórmulas',type:'fields',prompt:'Cuenta los átomos de Al(OH)₃.',labels:['Al','O','H'],answer:[1,3,3],why:'El 3 de fuera del paréntesis multiplica tanto al O como al H.'},
+  {id:'r-f3',topic:'Fórmulas',type:'number',prompt:'¿Cuántos átomos hay en total en Fe₂O₃?',answer:5,why:'Tiene 2 Fe + 3 O = 5 átomos.'}
+];
+const topics = ['modelos','estructura','tabla','configuracion','enlaces','oxidacion','formulas'];
+const topicLabels={modelos:'Modelos atómicos',estructura:'Átomo e iones',tabla:'Tabla periódica',configuracion:'Configuración electrónica',enlaces:'Enlaces',oxidacion:'Números de oxidación',formulas:'Fórmulas'};
+const total = Object.values(practice).flat().length;
+let solved={};try{solved=JSON.parse(localStorage.getItem('fyq-lab-progreso-v1')||'{}')||{}}catch(e){solved={}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function numValue(s){const x=String(s).trim().replace(/\s/g,'').replace(',','.').replace('−','-');return x!==''&&/^[-+]?\d+(?:\.\d+)?$/.test(x)?Number(x):NaN}
+function configValue(s){const supers={'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9'};return String(s).toLowerCase().replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,c=>supers[c]).replace(/[\s,;·.^]/g,'')}
+function prettyConfig(s){return String(s).replace(/([spdf])(\d+)/g,(_,orb,n)=>orb+n.replace(/\d/g,d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[Number(d)]))}
+function isRight(q,root){if(q.type==='mc'){const selected=root.querySelector('input[type="radio"]:checked');return selected?Number(selected.value)===q.answer:null}if(q.type==='fields'){const els=[...root.querySelectorAll('.multi-fields input')];if(els.some(e=>!e.value.trim()))return null;return els.every((e,i)=>numValue(e.value)===q.answer[i])}const el=root.querySelector('.answer-input');if(!el||!el.value.trim())return null;if(q.type==='config')return configValue(el.value)===configValue(q.answer);if(q.type==='number')return numValue(el.value)===q.answer;return null}
+function solution(q){if(q.type==='mc')return q.options[q.answer];if(q.type==='fields')return q.labels.map((l,i)=>l+': '+q.answer[i]).join(' · ');if(q.type==='config')return prettyConfig(q.answer);if(q.type==='number')return String(q.answer>0?'+':'')+q.answer;return q.answer}
+function qCard(q,idx,mode){const article=document.createElement('article');article.className='qcard';article.dataset.qid=q.id;const name='g-'+q.id;let controls='';if(q.type==='mc')controls='<div class="choices">'+q.options.map((op,i)=>`<label class="choice"><input type="radio" name="${name}" value="${i}" /> <span>${esc(op)}</span></label>`).join('')+'</div>';else if(q.type==='fields')controls='<div class="multi-fields">'+q.labels.map((l,i)=>`<label class="field">${esc(l)}<input type="number" inputmode="numeric" step="1" aria-label="${esc(l)}" /></label>`).join('')+'</div>';else controls=`<input type="text" class="answer-input" autocomplete="off" spellcheck="false" aria-label="Respuesta del ejercicio ${idx+1}" placeholder="${q.type==='config'?'Ej.: 1s2 2s2 2p6':q.type==='number'?'Escribe el número (ej.: +3)':'Escribe tu respuesta'}" />`;
+article.innerHTML=`<div class="qtop"><span class="qidx">${mode==='final'?'RETO '+(idx+1):'EJ. '+(idx+1)}</span><p class="qprompt">${esc(q.prompt)}</p></div><div class="qcontrols">${controls}</div>${mode==='practice'?`<div class="qactions"><button type="button" class="btn btn-primary btn-small check">Comprobar</button><button type="button" class="btn btn-outline btn-small hintbtn">Ver pista</button>${solved[q.id]?'<span style="font-size:12px;color:#13785b;font-weight:800">✓ Ya superado</span>':''}</div><div class="hint">💡 ${esc(q.hint||'Repasa la teoría del apartado.')}</div>`:''}<div class="feedback" aria-live="polite"></div>`;
+if(mode==='practice'){
+ article.querySelector('.check').addEventListener('click',()=>{const result=isRight(q,article);const fb=article.querySelector('.feedback');fb.className='feedback show '+(result===null?'info':result?'ok':'no');fb.innerHTML=result===null?'Escribe o selecciona una respuesta antes de comprobar.':result?'✓ <b>¡Correcto!</b> '+esc(q.why):'✗ <b>Aún no.</b> '+esc(q.hint||'Revisa el resumen y prueba otra vez.');if(result===true){solved[q.id]=true;try{localStorage.setItem('fyq-lab-progreso-v1',JSON.stringify(solved))}catch(e){}updateProgress();const bar=article.querySelector('.qactions');if(!bar.querySelector('.done'))bar.insertAdjacentHTML('beforeend','<span class="done" style="font-size:12px;color:#13785b;font-weight:800">✓ Superado</span>');}});
+ article.querySelector('.hintbtn').addEventListener('click',()=>{const h=article.querySelector('.hint');const on=h.classList.toggle('show');article.querySelector('.hintbtn').textContent=on?'Ocultar pista':'Ver pista'});
+ article.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('input.answer-input,input[type=number]')){e.preventDefault();article.querySelector('.check').click()}});
+}
+return article}
+function updateProgress(){const count=Object.values(practice).flat().filter(q=>solved[q.id]).length;document.getElementById('progressCount').textContent=`${count} de ${total} ejercicios resueltos`;const percent=Math.round(count/total*100);document.getElementById('progressFill').style.width=percent+'%';document.getElementById('progressTrack').setAttribute('aria-valuenow',String(percent))}
+for(const topic of topics){const root=document.getElementById('quiz-'+topic);practice[topic].forEach((q,i)=>root.append(qCard(q,i,'practice')))}updateProgress();
+// Simulador de estructura atómica
+function atomLab(){const z=Number(document.getElementById('atomZ').value),a=Number(document.getElementById('atomA').value),c=Number(document.getElementById('atomCharge').value),out=document.getElementById('atomOutput');if(!Number.isInteger(z)||!Number.isInteger(a)||z<1||z>118||a<z||a>300||z-c<0){out.textContent='Introduce Z entre 1 y 118 y A entre Z y 300. La carga elegida no puede dejar un número negativo de electrones.';return}const label=c===0?'átomo neutro':c>0?'catión (ha perdido '+c+' e⁻)':'anión (ha ganado '+Math.abs(c)+' e⁻)';out.innerHTML=`<strong>Resultado:</strong> ${z} protones · ${a-z} neutrones · ${z-c} electrones. <br/>Es un <strong>${esc(label)}</strong>. Operación: e⁻ = Z − carga = ${z} − (${c}) = ${z-c}.`}
+for(const id of ['atomZ','atomA','atomCharge'])document.getElementById(id).addEventListener('input',atomLab);atomLab();
+// Configuraciones electrónicas (hasta Z = 38, con excepciones Cr y Cu)
+const fillOrder=[['1s',2],['2s',2],['2p',6],['3s',2],['3p',6],['4s',2],['3d',10],['4p',6],['5s',2]];
+function makeConfig(z){let remaining=z;let result=[];for(const [orb,cap] of fillOrder){if(remaining<=0)break;const n=Math.min(remaining,cap);result.push([orb,n]);remaining-=n}if(z===24||z===29){result=result.map(([orb,n])=>orb==='4s'?[orb,1]:orb==='3d'?[orb,z===24?5:10]:[orb,n])}return result.filter(([,n])=>n>0)}
+function configLab(){const z=Number(document.getElementById('configZ').value),out=document.getElementById('configOutput');if(!Number.isInteger(z)||z<1||z>38){out.textContent='Introduce un número entero entre 1 y 38.';return}const c=makeConfig(z);const expression=c.map(([orb,n])=>prettyConfig(orb+n)).join(' ');out.innerHTML=`<strong>Configuración (Z = ${z}):</strong> <span class="mono" style="overflow-wrap:anywhere">${expression}</span><br/><small>Comprobación: ${c.map(([,n])=>n).join(' + ')} = ${z} electrones.${z===24||z===29?' Caso excepcional de estabilidad de subniveles.':''}</small>`}
+document.getElementById('configBtn').addEventListener('click',configLab);document.getElementById('configZ').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();configLab()}});configLab();
+// Reto final: una pregunta por apartado y cinco más, sin repeticiones.
+let challengeSet=[],challengeGraded=false;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function newChallenge(){const groups=['Modelos','Átomo e iones','Tabla periódica','Configuración','Enlaces','Oxidación','Fórmulas'];const selected=groups.map(t=>shuffle(finalPool.filter(q=>q.topic===t).slice())[0]);const remaining=shuffle(finalPool.filter(q=>!selected.some(s=>s.id===q.id)).slice());challengeSet=shuffle([...selected,...remaining.slice(0,5)]);challengeGraded=false;const root=document.getElementById('challengeQuestions');root.innerHTML='';challengeSet.forEach((q,i)=>root.append(qCard(q,i,'final')));document.getElementById('gradeChallenge').disabled=false;document.getElementById('challengeResult').className='result';document.getElementById('challengeResult').innerHTML=''}
+function gradeChallenge(){if(challengeGraded)return;const root=document.getElementById('challengeQuestions');const cards=[...root.children];const answers=challengeSet.map((q,i)=>isRight(q,cards[i]));const blanks=answers.filter(a=>a===null).length;if(blanks>0){const proceed=window.confirm(`Hay ${blanks} ${blanks===1?'pregunta sin responder':'preguntas sin responder'}. ¿Quieres corregir igualmente? Las preguntas en blanco contarán como incorrectas.`);if(!proceed)return}challengeGraded=true;let score=0;const wrongTopics=new Map();challengeSet.forEach((q,i)=>{const ok=answers[i]===true;if(ok)score++;else wrongTopics.set(q.topic,(wrongTopics.get(q.topic)||0)+1);const fb=cards[i].querySelector('.feedback');fb.className='feedback show '+(ok?'ok':'no');fb.innerHTML=(ok?'✓ <b>Correcto.</b> ':'✗ <b>Solución: '+esc(solution(q))+'.</b> ')+esc(q.why);cards[i].querySelectorAll('input').forEach(input=>input.disabled=true)});const note=score>=11?'¡Excelente dominio del tema!':score>=9?'¡Muy bien! Repasa los pequeños fallos.':score>=6?'Vas por buen camino. Revisa los apartados en los que has fallado.':'Conviene hacer otra vuelta por los resúmenes y las prácticas.';let rec='';if(wrongTopics.size){rec='<div class="focus"><b>¿Qué deberías repasar?</b><p>'+[...wrongTopics.entries()].sort((a,b)=>b[1]-a[1]).map(([name,n])=>`${esc(name)} (${n} ${n===1?'fallo':'fallos'})`).join(' · ')+'</p></div>'}const result=document.getElementById('challengeResult');result.className='result show';result.innerHTML=`<h3>Resultado de tu misión</h3><div class="result-score">${score} / ${challengeSet.length}</div><p><b>${note}</b></p><p>Has acertado ${score} de ${challengeSet.length} preguntas (${Math.round(score/challengeSet.length*100)} %). Puedes revisar las correcciones que aparecen bajo cada ejercicio.</p>${rec}`;document.getElementById('gradeChallenge').disabled=true;result.scrollIntoView({behavior:'smooth',block:'center'})}
+document.getElementById('gradeChallenge').addEventListener('click',gradeChallenge);document.getElementById('newChallenge').addEventListener('click',newChallenge);newChallenge();
+document.getElementById('resetProgress').addEventListener('click',()=>{if(window.confirm('¿Quieres borrar todos los aciertos guardados en este navegador?')){solved={};try{localStorage.removeItem('fyq-lab-progreso-v1')}catch(e){}document.querySelectorAll('.done').forEach(el=>el.remove());document.querySelectorAll('.practice .qactions>span:not(.done)').forEach(el=>el.remove());updateProgress()}});
+</script>
+</body>
+</html>
